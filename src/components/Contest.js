@@ -13,7 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
-
+//import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import NavigationBar from './NavigationBar';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -67,14 +68,7 @@ export default function Contest() {
   return (
     <React.Fragment>
       <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            잇플
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <NavigationBar/>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
@@ -114,18 +108,18 @@ export default function Contest() {
                   />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      공모전 이름
                     </Typography>
                     <Typography>
-                      This is a media card. You can use this section to describe the content.
+                      공모전 간략 소개
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button size="small" color="primary">
-                      View
+                      세부내용
                     </Button>
                     <Button size="small" color="primary">
-                      Edit
+                      모집글
                     </Button>
                   </CardActions>
                 </Card>
