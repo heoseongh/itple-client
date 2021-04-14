@@ -46,6 +46,13 @@ $ git branch
 ```bash
 $ git checktou -b contestpage
 ```
+#### 생성 되었는지 확인 (`*`이 contestpage에 위치하면 된다.)
+```bash
+$ git branch
+* contestpage
+  dev
+  main
+```
 ### 기능 구현 완료시 dev 브랜치로 merge
 ```bash
 $ git checkout dev
