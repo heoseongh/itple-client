@@ -26,14 +26,14 @@ export default function NavigationBar() {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
+          <Typography variant="h6" className={classes.title}>
+            Itple
+          </Typography>
+          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Signup</Button> */}
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Signup</Button>
         </Toolbar>
       </AppBar>
     </div>

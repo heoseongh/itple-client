@@ -1,12 +1,15 @@
-import './App.css';
-import Contest from './components/Contest';
-import ContestDetail from './components/ContestDetail';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter, Route } from 'react-router-dom';
+import ContestDetail from './route/ContestDetail';
+import Home from './route/Home';
 
 function App() {
   return (
     <CssBaseline />,
-    <ContestDetail />
+    <BrowserRouter>
+      <Route exact path={"/"} component={Home}/>
+      <Route exact path={"/detail/:id"} component={ContestDetail}/>
+    </BrowserRouter>
   );
 }
 
