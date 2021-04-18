@@ -1,7 +1,19 @@
 import { Button, Container, Grid, Typography } from "@material-ui/core";
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 
-function HomeHeader({classes}) {
+const useStyle = makeStyles((theme) => ({
+  header: {
+    backgroundColor: "#fff",
+    padding: (64, 0, 48),
+  },
+  heroButtons: {
+    marginTop: 32,
+  },
+}));
+
+function MainHeader() {
+  const classes = useStyle();
   return (
     <div className={classes.header}>
       <Container maxWidth="sm">
@@ -36,4 +48,4 @@ function HomeHeader({classes}) {
   );
 }
 
-export default HomeHeader;
+export default MainHeader;

@@ -1,8 +1,15 @@
 import { Container, Typography } from "@material-ui/core";
 import React from "react";
-import "../css/Home.css"
+import { makeStyles } from "@material-ui/core/styles";
 
-function DetailHeader({classes, contest}) {
+const useStyle = makeStyles((theme) => ({
+  header: {
+    backgroundColor: "#fff",
+    padding: (64, 0, 48),
+  },
+}));
+function DetailHeader({title, tags}) {
+  const classes = useStyle();
   return (
     <div className={classes.header}>
       <Container maxWidth="sm">
@@ -13,10 +20,10 @@ function DetailHeader({classes, contest}) {
           color="textPrimary"
           gutterBottom
         >
-          {contest.title}
+          {title}
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          {contest.tags.map((tag) => "#" + tag)}
+          {tags.map((tag) => "#" + tag)}
         </Typography>
       </Container>
     </div>

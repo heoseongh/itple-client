@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  href: {
+    color: "inherit",
+    textDecoration: "none"
+  }
 }));
 
 export default function NavigationBar() {
@@ -27,10 +32,10 @@ export default function NavigationBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Itple
+            <Link to={"/"} className={classes.href}>Itple</Link>
           </Typography>
           <Button color="inherit">Login</Button>
-          {/* <Button color="inherit">Signup</Button> */}
+          <Button color="inherit">Signup</Button>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
