@@ -33,8 +33,6 @@ const useStyles = makeStyles((theme) => ({
 function ContestItemView({ contest }) {
   const classes = useStyles();
   const { id, title, imageUrl, tags, summary, detail, createdAt } = contest;
-  const tagList = tags.map(tag => "#"+tag);
-  console.log(tags);
   return (
     <Grid item key={id} xs={12} sm={6} md={4}>
       <Card className={classes.card}>
@@ -43,7 +41,7 @@ function ContestItemView({ contest }) {
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>
-          <Typography>{tagList}</Typography>
+          <Typography>{tags && tags.map((tag) => "#" + tag)}</Typography>
         </CardContent>
         <CardActions>
           <Button size="small" color="primary">
