@@ -22,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "top",
   },
   cardContent: {
+    // height: "150px",
+    // overflow: "hidden",
     flexGrow: 1,
   },
   href: {

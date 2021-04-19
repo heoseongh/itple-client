@@ -15,7 +15,7 @@ class ContestContainer extends Component {
     const { classes, contests } = this.props;
     
     return (
-      <Container className={classes.cardGrid} maxWidth="md">
+      <Container className={classes.cardGrid} maxWidth="lg">
         <Grid container spacing={4}>
           {/* 공모전 리스트 뿌려주기 */}
           {contests.map((contest) => {
