@@ -27,14 +27,14 @@ const useStyles = makeStyles((theme) => ({
   href: {
     color: "inherit",
     textDecoration: "none",
-  }
+  },
 }));
 
 function ContestItemView({ contest }) {
   const classes = useStyles();
   const { id, title, imageUrl, tags, summary, detail, createdAt } = contest;
-
-  console.log(contest);
+  const tagList = tags.map(tag => "#"+tag);
+  console.log(tags);
   return (
     <Grid item key={id} xs={12} sm={6} md={4}>
       <Card className={classes.card}>
@@ -43,28 +43,28 @@ function ContestItemView({ contest }) {
           <Typography gutterBottom variant="h5" component="h2">
             {title}
           </Typography>
-          <Typography>{tags}</Typography>
+          <Typography>{tagList}</Typography>
         </CardContent>
         <CardActions>
-          <Link
-            className={classes.href}
-            key={id}
-            to={{
-              pathname: `/detail/${id}`,
-              state: {
-                title,
-                imageUrl,
-                tags,
-                summary,
-                detail,
-                createdAt,
-              },
-            }}
-          >
-            <Button size="small" color="primary">
+          <Button size="small" color="primary">
+            <Link
+              className={classes.href}
+              key={id}
+              to={{
+                pathname: `/detail/${id}`,
+                state: {
+                  title,
+                  imageUrl,
+                  tags,
+                  summary,
+                  detail,
+                  createdAt,
+                },
+              }}
+            >
               세부내용
-            </Button>
-          </Link>
+            </Link>
+          </Button>
           <Button size="small" color="primary">
             모집글
           </Button>

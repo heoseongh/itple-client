@@ -4,11 +4,11 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyle = makeStyles((theme) => ({
   header: {
-    backgroundColor: "#fff",
-    padding: (64, 0, 48),
+    backgroudndColor: theme.palette.background.paper, // #fff
+    padding: theme.spacing(8, 0, 6), // (64px, 0, 48px)
   },
-  heroButtons: {
-    marginTop: 32,
+  headerButtons: {
+    marginTop: theme.spacing(4), // 32px
   },
 }));
 
@@ -29,7 +29,7 @@ function MainHeader() {
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
           자신에게 맞는 공모전 정보를 찾아보세요.
         </Typography>
-        <div className={classes.heroButtons}>
+        <div className={classes.headerButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
               <Button variant="contained" color="primary">

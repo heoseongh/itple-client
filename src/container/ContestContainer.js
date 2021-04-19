@@ -12,8 +12,8 @@ const styles = {
 
 class ContestContainer extends Component {
   render() {
-    const { classes } = this.props;
-    const { contests } = this.props;
+    const { classes, contests } = this.props;
+    
     return (
       <Container className={classes.cardGrid} maxWidth="md">
         <Grid container spacing={4}>

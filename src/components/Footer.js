@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <footer className={classes.footer}>
       <Typography variant="h6" align="center" gutterBottom>
-        Footer
+        Itple
       </Typography>
       <Typography
         variant="subtitle1"
@@ -23,7 +23,7 @@ export default function Footer() {
         color="textSecondary"
         component="p"
       >
-        Something here to give the footer a purpose!
+        Platform for easy entry into IT-Contest
       </Typography>
       <Copyright />
     </footer>
