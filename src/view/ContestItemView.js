@@ -24,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
   cardContent: {
     flexGrow: 1,
   },
+  href: {
+    color: "inherit",
+    textDecoration: "none",
+  }
 }));
 
 function ContestItemView({ contest }) {
@@ -43,6 +47,7 @@ function ContestItemView({ contest }) {
         </CardContent>
         <CardActions>
           <Link
+            className={classes.href}
             key={id}
             to={{
               pathname: `/detail/${id}`,
