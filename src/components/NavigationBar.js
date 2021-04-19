@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function NavigationBar() {
+function NavigationBar() {
   const classes = useStyles();
 
   return (
@@ -34,8 +34,8 @@ export default function NavigationBar() {
           <Typography variant="h6" className={classes.title}>
             <Link to={"/"} className={classes.href}>Itple</Link>
           </Typography>
-          <Button color="inherit">Login</Button>
-          <Button color="inherit">Signup</Button>
+          <Button color="inherit"><Link to={"/sign-in"} className={classes.href}>Login</Link></Button>
+          <Button color="inherit"><Link to={"/sign-up"} className={classes.href}>Signup</Link></Button>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
           </IconButton>
@@ -44,3 +44,5 @@ export default function NavigationBar() {
     </div>
   );
 }
+
+export default NavigationBar;
