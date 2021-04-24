@@ -19,8 +19,7 @@
           "상금": "총 2억 원 상당의 상금\n 21년 여름 인턴 및 정규 채용 개발 직군\n 서류 및 코딩 테스트 면제",
           "홈페이지": "campaign.naver.com/airush"
         }
-      ],
-      "createdAt": "2021-03-03"
+      ]
     },
     {
       "id": "2",
@@ -48,8 +47,7 @@
           "상금": "3,000,000",
           "홈페이지": "http://goor.me/scofe2021"
         }
-      ],
-      "createdAt": "2021-03-03"
+      ]
     },
     { "id": 3, "imageUrl": "https://source.unsplash.com/random" },
     { "id": 4, "imageUrl": "https://source.unsplash.com/random" },

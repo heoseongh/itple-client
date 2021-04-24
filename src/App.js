@@ -4,6 +4,7 @@ import ContestDetailPage from "./route/ContestDetailPage";
 import ContestPage from "./route/ContestPage";
 import SignUpPage from "./route/SignUpPage";
 import SignInPage from "./route/SignInPage";
+import ApiTestPage from "./route/ApiTestPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Route exact path={"/detail/:id"} component={ContestDetailPage} />
       <Route exact path={"/sign-in"} component={SignInPage} />
       <Route exact path={"/sign-up"} component={SignUpPage} />
+      <Route exact path={"/api"} component={ApiTestPage} />
     </BrowserRouter>
   );
 }
