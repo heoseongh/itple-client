@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignInContainer() {
+function SignInContainer({onCreate, loginClicked}) {
   const classes = useStyles();
 
   return (
@@ -50,7 +50,7 @@ function SignInContainer() {
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <NavigationBar />
-        <SignInFormView />
+      <SignInFormView onCreate={onCreate} loginClicked={loginClicked}/>
       </Grid>
     </Grid>
   );

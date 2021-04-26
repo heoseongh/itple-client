@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ContestApi from "../api/ContestApi";
+import ContestApi from "../api/contest.api";
 
 /**
  * @class

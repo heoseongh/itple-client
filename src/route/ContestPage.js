@@ -3,7 +3,7 @@ import NavigationBar from "../components/NavigationBar";
 import MainHeader from "../components/MainHeader";
 import ContestContainer from "../container/ContestContainer";
 import Footer from "../components/Footer";
-import ContestApi from "../api/ContestApi";
+import ContestApi from "../api/contest.api";
 
 class Home extends Component {
   state = {
@@ -49,7 +49,7 @@ class Home extends Component {
     return (
       <div>
         <React.Fragment>
-          <NavigationBar />
+          <NavigationBar setLoggedInState={this.props.setLoggedInState} isLoggedIn={this.props.isLoggedIn}/>
           <main>
             <MainHeader />
             <ContestContainer contests={contests} />

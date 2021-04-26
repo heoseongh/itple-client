@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -9,6 +9,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
+import { loginClicked } from "../api/auth.api";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -34,8 +35,40 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUpFormView() {
+function SignUpFormView({onCreate}) {
   const classes = useStyles();
+
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
+  
+
+  /**
+   * @description 폼 제출시 호출되는 메서드
+   * @param {event} event
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 회원가입시 화면 전환이 되지 않도록 이벤트 진행을 막는다.
+    
+    // SignUpPage 컴포넌트에 넘겨줄 폼 데이터
+    const signUpForm = {
+      username: username,
+      password: password,
+    }
+
+    // 폼 공백으로 초기화
+    setUsername('');
+    setEmail('');
+    setPassword('');
+    setPasswordConfirm('');
+
+    // 폼에 작성된 데이터를 SignUpPage로 넘겨준다. 
+    onCreate(signUpForm);
+    loginClicked(signUpForm);
+    alert("가입되었습니다.");
+    this.props.history.push("/");
+  }
 
   return (
     <div className={classes.paper}>
@@ -45,7 +78,7 @@ function SignUpFormView() {
       <Typography component="h1" variant="h5">
         회원가입
       </Typography>
-      <form className={classes.form} noValidate>
+      <form className={classes.form} onSubmit={handleSubmit} noValidate>
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <TextField
@@ -55,6 +88,8 @@ function SignUpFormView() {
               id="account"
               label="닉네임"
               name="account"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               // autoComplete="email"
             />
           </Grid>
@@ -67,6 +102,8 @@ function SignUpFormView() {
               label="이메일"
               name="email"
               autoComplete="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -79,6 +116,8 @@ function SignUpFormView() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>
@@ -91,6 +130,8 @@ function SignUpFormView() {
               type="password"
               id="password"
               autoComplete="current-password"
+              value={passwordConfirm}
+              onChange={(e) => setPasswordConfirm(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>

@@ -8,11 +8,11 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Copyright from "../components/Copyright";
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -38,8 +38,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInFormView() {
+export default function SignInFormView({ onCreate, loginClicked }) {
   const classes = useStyles();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  /**
+   * @description 폼 제출시 호출되는 메서드
+   * @param {event} event
+   */
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 회원가입시 화면 전환이 되지 않도록 이벤트 진행을 막는다.
+
+    // SignUpPage 컴포넌트에 넘겨줄 폼 데이터
+    const signInForm = {
+      username: username,
+      password: password,
+    };
+
+    // state 공백으로 초기화
+    setUsername("");
+    setPassword("");
+
+    // 폼에 작성된 데이터를 SignUpPage로 넘겨준다.
+    onCreate(signInForm);
+    loginClicked(signInForm);
+    
+    alert("로그인되었습니다.");
+  };
 
   return (
     <div className={classes.paper}>
@@ -49,7 +76,7 @@ export default function SignInFormView() {
       <Typography component="h1" variant="h5">
         로그인
       </Typography>
-      <form className={classes.form} noValidate>
+      <form className={classes.form} noValidate onSubmit={handleSubmit}>
         <TextField
           variant="outlined"
           margin="normal"
@@ -60,6 +87,8 @@ export default function SignInFormView() {
           name="email"
           autoComplete="email"
           autoFocus
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
         />
         <TextField
           variant="outlined"
@@ -71,6 +100,8 @@ export default function SignInFormView() {
           type="password"
           id="password"
           autoComplete="current-password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <FormControlLabel
           control={<Checkbox value="remember" color="primary" />}
