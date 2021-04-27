@@ -4,10 +4,10 @@ import Container from "@material-ui/core/Container";
 import Copyright from "../components/Copyright";
 import SignUpFormView from "../view/SignUpFormView";
 
-function SignUpContainer({onCreate}) {
+function SignUpContainer({ signUpClicked }) {
   return (
     <Container maxWidth="xs">
-      <SignUpFormView onCreate={onCreate}/>
+      <SignUpFormView signUpClicked={signUpClicked} />
       <Box mt={5}>
         <Copyright />
       </Box>

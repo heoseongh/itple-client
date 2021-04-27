@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -7,7 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import { clear } from "../api/token.api";
+import * as LIB from "../api/lib/index";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,13 +25,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NavigationBar({ isLoggedIn, setLoggedInState }) {
+function NavigationBar() {
   const classes = useStyles();
 
-  const logout = () => {
-    clear();
-    setLoggedInState(false);
-    alert("정상적으로 로그아웃 되었습니다.")
+  const signout = () => {
+    LIB.Token.clear();
+    alert("정상적으로 로그아웃 되었습니다.");
+    window.location.href = "/";
   }
 
   return (
@@ -43,8 +43,8 @@ function NavigationBar({ isLoggedIn, setLoggedInState }) {
               Itple
             </Link>
           </Typography>
-          {isLoggedIn ? (
-            <Button color="inherit" onClick={logout}>
+          {LIB.Token.isTokenExist() ? (
+            <Button color="inherit" onClick={signout}>
                 Logout
             </Button>
           ) : (

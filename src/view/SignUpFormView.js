@@ -9,7 +9,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import { loginClicked } from "../api/auth.api";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,14 +34,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUpFormView({onCreate}) {
+function SignUpFormView({ signUpClicked }) {
   const classes = useStyles();
 
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
-  
+  const [nickname, setNickname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
 
   /**
    * @description 폼 제출시 호출되는 메서드
@@ -50,25 +48,23 @@ function SignUpFormView({onCreate}) {
    */
   const handleSubmit = (e) => {
     e.preventDefault(); // 회원가입시 화면 전환이 되지 않도록 이벤트 진행을 막는다.
-    
-    // SignUpPage 컴포넌트에 넘겨줄 폼 데이터
+
+    // SignInPage 컴포넌트에 넘겨줄 로그인 폼
     const signUpForm = {
-      username: username,
+      nickname: nickname,
+      username: email,
       password: password,
-    }
+    };
 
-    // 폼 공백으로 초기화
-    setUsername('');
-    setEmail('');
-    setPassword('');
-    setPasswordConfirm('');
+    // 폼에 작성된 데이터를 SignInPage 컴포넌트로 넘겨준다.
+    signUpClicked(signUpForm);
 
-    // 폼에 작성된 데이터를 SignUpPage로 넘겨준다. 
-    onCreate(signUpForm);
-    loginClicked(signUpForm);
-    alert("가입되었습니다.");
-    this.props.history.push("/");
-  }
+    // 보통 폼 제출시 폼에 입력된 정보들을 초기화 한다. 따라서 state를 공백으로 초기화 해주면 된다.
+    setNickname("");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirm("");
+  };
 
   return (
     <div className={classes.paper}>
@@ -85,11 +81,11 @@ function SignUpFormView({onCreate}) {
               variant="outlined"
               required
               fullWidth
-              id="account"
+              id="nickname"
               label="닉네임"
-              name="account"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              name="nickname"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
               // autoComplete="email"
             />
           </Grid>
@@ -125,10 +121,10 @@ function SignUpFormView({onCreate}) {
               variant="outlined"
               required
               fullWidth
-              name="password"
+              name="passwordConfirm"
               label="비밀번호확인"
               type="password"
-              id="password"
+              id="passwordConfirm"
               autoComplete="current-password"
               value={passwordConfirm}
               onChange={(e) => setPasswordConfirm(e.target.value)}

@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInFormView({ onCreate, loginClicked }) {
+function SignInFormView({ signInClicked }) {
   const classes = useStyles();
 
   const [username, setUsername] = useState("");
@@ -51,21 +51,18 @@ export default function SignInFormView({ onCreate, loginClicked }) {
   const handleSubmit = (e) => {
     e.preventDefault(); // 회원가입시 화면 전환이 되지 않도록 이벤트 진행을 막는다.
 
-    // SignUpPage 컴포넌트에 넘겨줄 폼 데이터
+    // SignInPage 컴포넌트에 넘겨줄 로그인 폼
     const signInForm = {
       username: username,
       password: password,
     };
 
-    // state 공백으로 초기화
+    // 폼에 작성된 데이터를 SignInPage 컴포넌트로 넘겨준다.
+    signInClicked(signInForm);
+
+    // 보통 폼 제출시 폼에 입력된 정보들을 초기화 한다. 따라서 state를 공백으로 초기화 해주면 된다.
     setUsername("");
     setPassword("");
-
-    // 폼에 작성된 데이터를 SignUpPage로 넘겨준다.
-    onCreate(signInForm);
-    loginClicked(signInForm);
-    
-    alert("로그인되었습니다.");
   };
 
   return (
@@ -135,3 +132,4 @@ export default function SignInFormView({ onCreate, loginClicked }) {
     </div>
   );
 }
+export default SignInFormView;

@@ -49,7 +49,7 @@ class Home extends Component {
     return (
       <div>
         <React.Fragment>
-          <NavigationBar setLoggedInState={this.props.setLoggedInState} isLoggedIn={this.props.isLoggedIn}/>
+          <NavigationBar />
           <main>
             <MainHeader />
             <ContestContainer contests={contests} />
