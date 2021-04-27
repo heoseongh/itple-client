@@ -39,6 +39,7 @@ export const signup = ({ nickname, username, password }) => {
     })
     .then((response) => {
       localStorage.setItem("authenticatedUser", response.data.username);
+      localStorage.setItem("nickname", response.data.nickname);
       AuthenticationService.executeJwtAuthenticationService(
         username,
         password

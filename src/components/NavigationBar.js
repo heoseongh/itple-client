@@ -6,8 +6,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import * as LIB from "../api/lib/index";
+import SideMenu from "./SideMenu";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +32,7 @@ function NavigationBar() {
     LIB.Token.clear();
     alert("정상적으로 로그아웃 되었습니다.");
     window.location.href = "/";
-  }
+  };
 
   return (
     <div className={classes.root}>
@@ -44,9 +44,10 @@ function NavigationBar() {
             </Link>
           </Typography>
           {LIB.Token.isTokenExist() ? (
-            <Button color="inherit" onClick={signout}>
-                Logout
-            </Button>
+            <>
+            {localStorage.getItem('nickname')}님 안녕하세요!
+            <SideMenu signout={signout}/>
+            </>
           ) : (
             <div>
               <Button color="inherit">
@@ -67,7 +68,6 @@ function NavigationBar() {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
